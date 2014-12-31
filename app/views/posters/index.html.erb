@@ -1,0 +1,31 @@
+<h1>Listing posters</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>Cover</th>
+      <th>Subject</th>
+      <th>Click</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posters.each do |poster| %>
+      <tr>
+        <td><%= image_tag poster.cover.url , {height: '50px'} %></td>
+        <td><%= poster.subject %></td>
+        <td><%= poster.click %></td>
+        <td><%= poster.author_id %></td>
+        <td><%= link_to 'Show', poster %></td>
+        <td><%= link_to 'Edit', edit_poster_path(poster) %></td>
+        <td><%= link_to 'Destroy', poster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Poster', new_poster_path %>
